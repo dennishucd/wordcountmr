@@ -71,11 +71,16 @@ public class WordCountMR {
 
         //设置HADOOP_HOME目录(仅用于本地环境)
         System.setProperty("hadoop.home.dir", "G:\\hadoop-2.7.3");
+        System.setProperty("HADOOP_USER_NAME", "root");
 
         Configuration conf = new Configuration();
 
+        //开启跨平台提交
+        conf.set("mapreduce.app-submission.cross-platform", "true");
+
         Job job = Job.getInstance(conf, "WordCountApp");
         job.setJarByClass(getClass());
+        job.setJar("G:\\Tea\\E3\\wordcountmr\\target\\WordCountMR.jar");
 
         // 设置输入和输出路径
         FileInputFormat.addInputPath(job, new Path(args[0]));
@@ -97,8 +102,8 @@ public class WordCountMR {
         //仅供测试
         if (args == null || args.length == 0) {
             args = new String[]{
-                    "file:///G:/hadoop/input/",
-                    "file:///G:/hadoop/output/"
+                    "hdfs://ha-cluster/user/root/input/",
+                    "hdfs://ha-cluster/user/root/output/"
             };
         }
 

@@ -14,9 +14,21 @@
   limitations under the License. See accompanying LICENSE file.
 -->
 
+<!-- Put site-specific property overrides in this file. -->
 <configuration>
   <property>
+    <!-- The runtime framework for executing MapReduce jobs. Can be one of local, classic or yarn. Default value: local -->
     <name>mapreduce.framework.name</name>
-    <value>local</value>
+    <value>yarn</value>
+  </property>
+  <property>
+    <!-- MapReduce JobHistory Server IPC host:port -->
+    <name>mapreduce.jobhistory.address</name>
+    <value>hadoop01:10020</value>
+  </property>
+  <property>
+    <!-- MapReduce JobHistory Server Web UI host:port -->
+    <name>mapreduce.jobhistory.webapp.address</name>
+    <value>hadoop01:19888</value>
   </property>
 </configuration>

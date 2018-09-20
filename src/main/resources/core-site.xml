@@ -14,14 +14,21 @@
   limitations under the License. See accompanying LICENSE file.
 -->
 
+<!-- Put site-specific property overrides in this file. -->
 <configuration>
   <property>
+    <!-- The name of the default file system. A URI whose scheme and authority determine the FileSystem implementation. default value: file:/// -->
     <name>fs.defaultFS</name>
-    <value>file:///</value>
+    <value>hdfs://ha-cluster</value>
   </property>
-    <property>
-        <!-- A base for other temporary directories.default value: /tmp/hadoop-${user.name} -->
-        <name>hadoop.tmp.dir</name>
-        <value>file:///G:/hadoop/hadoop-tmp</value>
-    </property>
+  <property>
+    <!-- A base for other temporary directories.default value: /tmp/hadoop-${user.name} -->
+    <name>hadoop.tmp.dir</name>
+    <value>/opt/hadoop-2.7.3/hadoop-tmp</value>
+  </property>
+  <property>
+    <!--A list of ZooKeeper server addresses, separated by commas, that are to be used by the ZKFailoverController in automatic failover.-->
+    <name>ha.zookeeper.quorum</name>
+    <value>hadoop01:2181,hadoop02:2181,hadoop03:2181</value>
+  </property>
 </configuration>
